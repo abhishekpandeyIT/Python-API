@@ -21,11 +21,14 @@ DELETE '/preferences/<user_id>/favorites/<recipe_id>':
 """
 
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials, firestore
 
 # Initialize Flask app
 app = Flask(__name__)
+# Adding cors to flask
+CORS(app)
 
 # Initialize Firebase app
 cred = credentials.Certificate('firebase_credentials.json')
@@ -140,4 +143,4 @@ def delete_user_favorite_recipe(user_id, recipe_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
