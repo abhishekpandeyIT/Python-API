@@ -35,6 +35,9 @@ cred = credentials.Certificate('firebase_credentials.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
+@app.route('/')
+def home_page():
+    return 'Feed me better API working'
 
 @app.route('/preferences/<user_id>', methods=['GET'])
 def get_user_preferences(user_id):
